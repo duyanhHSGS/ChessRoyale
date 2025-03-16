@@ -4,14 +4,14 @@ name=ChessRoyale
 Type=1
 Ver=2
 ObjFiles=
-Includes="C:\Users\Laptop\Desktop\Code Projects\ChessRoyale\lib\SDL3-3.2.8\x86_64-w64-mingw32\include";"C:\Users\Laptop\Desktop\Code Projects\ChessRoyale\lib\SDL3_image-3.2.4\x86_64-w64-mingw32\include"
-Libs="C:\Users\Laptop\Desktop\Code Projects\ChessRoyale\lib\SDL3-3.2.8\x86_64-w64-mingw32\lib";"C:\Users\Laptop\Desktop\Code Projects\ChessRoyale\lib\SDL3_image-3.2.4\x86_64-w64-mingw32\lib"
+Includes="C:\Users\Laptop\Desktop\Code Projects\ChessRoyale\lib\SDL3-3.2.8\x86_64-w64-mingw32\include";"C:\Users\Laptop\Desktop\Code Projects\ChessRoyale\lib\SDL3_image-3.2.4\x86_64-w64-mingw32\include";"C:\Users\Laptop\Desktop\Code Projects\ChessRoyale\lib\SDL3_ttf-3.1.0\x86_64-w64-mingw32\include"
+Libs="C:\Users\Laptop\Desktop\Code Projects\ChessRoyale\lib\SDL3-3.2.8\x86_64-w64-mingw32\lib";"C:\Users\Laptop\Desktop\Code Projects\ChessRoyale\lib\SDL3_image-3.2.4\x86_64-w64-mingw32\lib";"C:\Users\Laptop\Desktop\Code Projects\ChessRoyale\lib\SDL3_ttf-3.1.0\x86_64-w64-mingw32\lib"
 PrivateResource=ChessRoyale_private.rc
 ResourceIncludes=
 MakeIncludes=
 Compiler=
 CppCompiler=
-Linker=-lSDL3_@@_-lSDL3_image_@@__@@_
+Linker=-lSDL3_@@_-lSDL3_image_@@_-lSDL3_ttf_@@__@@_
 IsCpp=1
 Icon=ChessRoyale.ico
 ExeOutput=
@@ -29,7 +29,7 @@ IncludeVersionInfo=1
 SupportXPThemes=0
 CompilerSet=6
 CompilerSettings=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
-UnitCount=4
+UnitCount=8
 
 [VersionInfo]
 Major=1
@@ -61,7 +61,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-FileName=src\Game.cpp
+FileName=src\App.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -71,7 +71,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit4]
-FileName=src\Game.h
+FileName=src\Player.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -81,7 +81,47 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=src\main2.cpp
+FileName=src\App.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit6]
+FileName=src\ChessBoard.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit7]
+FileName=src\GameMenuUI.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit5]
+FileName=GameManager.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit8]
+FileName=src\GameMenuUI.h
 CompileCpp=1
 Folder=
 Compile=1
