@@ -75,7 +75,7 @@ bool App::init(const std::string& title, int xpos, int ypos, int windowWidth, in
 		SDL_Log(" - Renderer %d: %s", i, driverName);
 	}
 //init the menu UI
-	menuUI = new GameMenuUI(renderer);
+	menuUI = new GameMenuUI(renderer, windowWidth, windowHeight);
 // running = on
 	isRunning = true;
 	return true;
@@ -93,17 +93,18 @@ void App::handleEvents() {
             menuUI->handleEvents(event); 
         }
     }
-    SDL_GetMouseState(&mx, &my);
-    SDL_Log("Mouse Position: (%f, %f)", mx, my);
+//    SDL_GetMouseState(&mx, &my);
+//    SDL_Log("Mouse Position: (%f, %f)", mx, my);
 }
 
 
 
 void App::update() {
+	
 }
 
 void App::render() {
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // background
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0); 
 	SDL_RenderClear(renderer);
 	menuUI->render();
 	
