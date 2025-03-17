@@ -1,7 +1,7 @@
 #ifndef APP_H
 #define APP_H
 
-#include "GameMenuUI.h"
+#include "GameManager.h"
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include <iostream>
@@ -25,6 +25,7 @@ private:
     SDL_Renderer* renderer;
     bool isRunning;
     int windowWidth,windowHeight;
+    GameManager* manager;
 };
 
 #endif // App_H

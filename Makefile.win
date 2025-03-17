@@ -5,15 +5,15 @@ CPP      = x86_64-w64-mingw32-g++.exe
 CC       = x86_64-w64-mingw32-gcc.exe
 WINDRES  = windres.exe
 RES      = object/ChessRoyale_private.res
-OBJ      = object/main.o object/App.o object/GameMenuUI.o $(RES)
-LINKOBJ  = object/main.o object/App.o object/GameMenuUI.o $(RES)
+OBJ      = object/main.o object/App.o object/GameMenuUI.o object/GameManager.o object/BattleUI.o object/ChessBoard.o object/ChessPiece.o $(RES)
+LINKOBJ  = object/main.o object/App.o object/GameMenuUI.o object/GameManager.o object/BattleUI.o object/ChessBoard.o object/ChessPiece.o $(RES)
 LIBS     = -L"C:/TDM-GCC-64/lib" -L"C:/Users/Laptop/Desktop/Code Projects/ChessRoyale/lib/SDL3-3.2.8/x86_64-w64-mingw32/lib" -L"C:/Users/Laptop/Desktop/Code Projects/ChessRoyale/lib/SDL3_image-3.2.4/x86_64-w64-mingw32/lib" -L"C:/Users/Laptop/Desktop/Code Projects/ChessRoyale/lib/SDL3_ttf-3.1.0/x86_64-w64-mingw32/lib" -lSDL3 -lSDL3_image -lSDL3_ttf
 INCS     = -I"C:/Users/Laptop/Desktop/Code Projects/ChessRoyale/lib/SDL3-3.2.8/x86_64-w64-mingw32/include" -I"C:/Users/Laptop/Desktop/Code Projects/ChessRoyale/lib/SDL3_image-3.2.4/x86_64-w64-mingw32/include" -I"C:/Users/Laptop/Desktop/Code Projects/ChessRoyale/lib/SDL3_ttf-3.1.0/x86_64-w64-mingw32/include"
 CXXINCS  = -I"C:/TDM-GCC-64/include" -I"C:/Users/Laptop/Desktop/Code Projects/ChessRoyale/lib/SDL3-3.2.8/x86_64-w64-mingw32/include" -I"C:/Users/Laptop/Desktop/Code Projects/ChessRoyale/lib/SDL3_image-3.2.4/x86_64-w64-mingw32/include" -I"C:/Users/Laptop/Desktop/Code Projects/ChessRoyale/lib/SDL3_ttf-3.1.0/x86_64-w64-mingw32/include"
 BIN      = ChessRoyale.exe
 CXXFLAGS = $(CXXINCS) 
 CFLAGS   = $(INCS) 
-DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\DevCpp.exe INTERNAL_DEL
+DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\devcpp.exe INTERNAL_DEL
 
 .PHONY: all all-before all-after clean clean-custom
 
@@ -33,6 +33,18 @@ object/App.o: src/App.cpp
 
 object/GameMenuUI.o: src/GameMenuUI.cpp
 	$(CPP) -c src/GameMenuUI.cpp -o object/GameMenuUI.o $(CXXFLAGS)
+
+object/GameManager.o: src/GameManager.cpp
+	$(CPP) -c src/GameManager.cpp -o object/GameManager.o $(CXXFLAGS)
+
+object/BattleUI.o: src/BattleUI.cpp
+	$(CPP) -c src/BattleUI.cpp -o object/BattleUI.o $(CXXFLAGS)
+
+object/ChessBoard.o: src/ChessBoard.cpp
+	$(CPP) -c src/ChessBoard.cpp -o object/ChessBoard.o $(CXXFLAGS)
+
+object/ChessPiece.o: src/ChessPiece.cpp
+	$(CPP) -c src/ChessPiece.cpp -o object/ChessPiece.o $(CXXFLAGS)
 
 object/ChessRoyale_private.res: ChessRoyale_private.rc 
 	$(WINDRES) -i ChessRoyale_private.rc --input-format=rc -o object/ChessRoyale_private.res -O coff 

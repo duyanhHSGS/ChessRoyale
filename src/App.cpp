@@ -1,8 +1,7 @@
 #include "App.h"
 
-GameMenuUI* menuUI = nullptr;
 App::App()
-	: window(nullptr), renderer(nullptr),
+	: window(nullptr), renderer(nullptr), manager(nullptr),
 	  isRunning(false), windowWidth(0), windowHeight(0) {}
 
 App::~App() {
@@ -74,8 +73,8 @@ bool App::init(const std::string& title, int xpos, int ypos, int windowWidth, in
 		const char* driverName = SDL_GetRenderDriver(i);
 		SDL_Log(" - Renderer %d: %s", i, driverName);
 	}
-//init the menu UI
-	menuUI = new GameMenuUI(renderer, windowWidth, windowHeight);
+//init manager
+	manager = new GameManager(renderer, windowWidth, windowHeight);
 // running = on
 	isRunning = true;
 	return true;
@@ -84,19 +83,15 @@ bool App::init(const std::string& title, int xpos, int ypos, int windowWidth, in
 float mx=0, my=0; //mouse pos
 void App::handleEvents() {
     SDL_Event event;
-
     while (SDL_PollEvent(&event)) {
         if (event.type == SDL_EVENT_QUIT) {
             isRunning = false;
         }
-        if (menuUI) {
-            menuUI->handleEvents(event); 
+        if (manager) {
+            manager->handleEvents(event);
         }
     }
-//    SDL_GetMouseState(&mx, &my);
-//    SDL_Log("Mouse Position: (%f, %f)", mx, my);
 }
-
 
 
 void App::update() {
@@ -106,7 +101,7 @@ void App::update() {
 void App::render() {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0); 
 	SDL_RenderClear(renderer);
-	menuUI->render();
+	manager->render();
 	
 	SDL_RenderPresent(renderer);
 }
@@ -122,10 +117,11 @@ void App::clean() {
 		window = nullptr;
 		SDL_Log("Window destroyed.\n");
 	}
-	if (menuUI) {
-		delete menuUI;
-		menuUI = nullptr;
-		SDL_Log("Menu destroyed.\n");
+	if (manager) {
+		manager->clean();
+		delete manager;
+		manager = nullptr;
+		SDL_Log("Manager destroyed.\n");
 	}
 	TTF_Quit();
 	SDL_Log("TTF quit.\n");

@@ -7,6 +7,9 @@
 #include <vector>
 #include <string>
 #include <cmath>
+#include "GameManager.h"
+
+class GameManager;
 
 struct Button {
     SDL_Rect rect;
@@ -19,11 +22,12 @@ struct Button {
 
 class GameMenuUI {
 public:
-    GameMenuUI(SDL_Renderer* renderer, int windowWidth, int windowHeight);
+    GameMenuUI(SDL_Renderer* renderer, int windowWidth, int windowHeight, GameManager* manager);
     ~GameMenuUI();
     void render();
     void handleEvents(SDL_Event& event);
 private:
+	GameManager* manager;
 	SDL_Texture* backgroundTexture;
 	TTF_Font* font;
     SDL_Renderer* renderer;
